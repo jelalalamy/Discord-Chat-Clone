@@ -1,0 +1,28 @@
+import { formatRelative } from 'date-fns';
+
+const formatDate = date => {
+    let formattedDate = '';
+    if (date) {
+        // Convert the date to words relative to the current date
+        formattedDate = formatRelative(date, new Date());
+        // Capitalize first letter 
+        formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+    }
+    return formattedDate;
+}
+
+const Message = ({ createdAt = null, text = '', displayName = '', photoURL = '' }) => {
+
+    if (!text) return null;
+
+    return (
+        <div>
+            {photoURL && (<img src={photoURL} alt="Avatar" className="rounded-full mr-4" width={45} height={45}/>)}
+            {displayName && (<p>{displayName}</p>)}
+            {createdAt?.seconds && (<span>{formatDate(new Date(createdAt.seconds * 1000))}</span>)}
+            <p>{text}</p>
+        </div>
+    )
+}
+
+export default Message
