@@ -28,7 +28,7 @@ const PopUp = ({ user = null, stateChanger }) => {
                     <label>Change nickname</label>
                     <input type="text" value={newNickname} onChange={handleOnChange}></input>
                     <button type="submit">Update</button>
-                    <label>Change picture: coming soon</label>
+                    <label>Change picture and set hidden: coming soon</label>
                 </form>
             </div>
         </div>
