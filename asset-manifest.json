@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Discord-Chat-Clone/static/css/main.d019031d.chunk.css",
+    "main.js": "/Discord-Chat-Clone/static/js/main.d77e3da5.chunk.js",
+    "main.js.map": "/Discord-Chat-Clone/static/js/main.d77e3da5.chunk.js.map",
+    "runtime-main.js": "/Discord-Chat-Clone/static/js/runtime-main.9baf243d.js",
+    "runtime-main.js.map": "/Discord-Chat-Clone/static/js/runtime-main.9baf243d.js.map",
+    "static/js/2.d8f6facb.chunk.js": "/Discord-Chat-Clone/static/js/2.d8f6facb.chunk.js",
+    "static/js/2.d8f6facb.chunk.js.map": "/Discord-Chat-Clone/static/js/2.d8f6facb.chunk.js.map",
+    "static/js/3.7dc93c26.chunk.js": "/Discord-Chat-Clone/static/js/3.7dc93c26.chunk.js",
+    "static/js/3.7dc93c26.chunk.js.map": "/Discord-Chat-Clone/static/js/3.7dc93c26.chunk.js.map",
+    "index.html": "/Discord-Chat-Clone/index.html",
+    "static/css/main.d019031d.chunk.css.map": "/Discord-Chat-Clone/static/css/main.d019031d.chunk.css.map",
+    "static/js/2.d8f6facb.chunk.js.LICENSE.txt": "/Discord-Chat-Clone/static/js/2.d8f6facb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9baf243d.js",
+    "static/js/2.d8f6facb.chunk.js",
+    "static/css/main.d019031d.chunk.css",
+    "static/js/main.d77e3da5.chunk.js"
+  ]
+}
