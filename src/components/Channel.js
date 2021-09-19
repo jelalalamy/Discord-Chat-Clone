@@ -2,6 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { useState, useEffect } from 'react'
+import { doc, updateDoc } from 'firebase/firestore';
 import Message from './Message'
 
 const Channel = ({ user = null}) => {
@@ -28,21 +29,38 @@ const Channel = ({ user = null}) => {
         setNewMessage(e.target.value);
     };
 
-    const handleOnSubmit = e => {
+    const handleOnSubmit = async e => {
         e.preventDefault();
 
+        const personFrom = await db.collection('users').doc(uid).get();
+        const blocked = await personFrom.data().blocked;
+        console.log("blocked: ", blocked);
         if (db) {
-            db.collection('messages').add({
-                text: newMessage,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                uid,
-                displayName,
-                photoURL
-            })
+            if (!blocked){
+                db.collection('messages').add({
+                    text: newMessage,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    uid,
+                    displayName,
+                    photoURL
+                })
+            } else {
+                console.log("user is blocked so message didnt send");
+            }
+            if (newMessage.includes("corn")){
+                block();
+            }
         }
 
         // Message field empties after submitting
         setNewMessage('');
+    }
+
+    const block = async () => {
+        console.log("blocked lmao");
+        await updateDoc(doc(db, 'users', uid), {
+            blocked: true
+        })
     }
 
     // Clicking on a message

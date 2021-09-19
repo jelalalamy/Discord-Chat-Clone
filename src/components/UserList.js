@@ -29,7 +29,7 @@ const UserList = () => {
             <ul>
                 {
                     users.map(user => (
-                        <li key={user.id}><img src={user.photoURL} alt="Avatar" className="rounded-full mr-4" width={45} height={45}/>{user.nickname}</li>
+                        <li key={user.id}><img src={user.photoURL} alt="Avatar" className="userPic" width={45} height={45}/>{user.nickname}</li>
                     ))
                 }
             </ul>

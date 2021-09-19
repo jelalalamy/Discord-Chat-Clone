@@ -18,14 +18,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 const App = () => {
   // Initializing state so we don't render while connecting
   const [initializing, setInitializing] = useState(true);
   const [pop, setPop] = useState(false);
-  const [user, setUser] = useState(() => auth.currentUser);  
+  const [user, setUser] = useState(() => auth.currentUser);
   const db = firebase.firestore();
 
   // Monitor signed or signed out
@@ -51,14 +51,25 @@ const App = () => {
     // Set languageto the default browser preference
     auth.useDeviceLanguage();
     // Start sign in 
-    try{
+    try {
       const res = await firebase.auth().signInWithPopup(provider)
       const user2 = res.user;
       console.log(user2);
-      await setDoc(doc(db, 'users', user2.uid), {
-        nickname: "newwww user",
-        photoURL: user2.photoURL
-      })
+      
+      // Getting all user ids and checking if the current user is new
+      const snapshot = await firebase.firestore().collection('users').get()
+      const documentIds = snapshot.docs.map(doc => doc.id);
+
+      console.log(documentIds);
+
+      // If they are new, thens set up their data
+      if (!documentIds.includes(user2.uid)) {
+        await setDoc(doc(db, 'users', user2.uid), {
+          nickname: "New user",
+          photoURL: user2.photoURL,
+          blocked: false
+        })
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -68,7 +79,7 @@ const App = () => {
   const signOut = async () => {
     try {
       auth.signOut();
-    } catch (error){
+    } catch (error) {
       console.log(error.message);
     }
   };
@@ -76,19 +87,19 @@ const App = () => {
   //
   return (
     <div>
-      { 
+      {
         user ? (
           <div className="container">
             <div className="placeholderdiv">
               <h1>god i need to get better at css</h1>
-              <Channel user={user}/>
+              <Channel user={user} />
               <Button onClick={() => setPop(!pop)} text="User"></Button>
               {pop && <PopUp user={user} stateChanger={setPop}></PopUp>}
               <Button onClick={signOut} text="Sign out"></Button>
             </div>
             <UserList></UserList>
           </div>
-        ) : 
+        ) :
           <>
             <h1>Hey, this is going to be my own realtime chat application.</h1>
             <Button onClick={signInGoogle} text="Sign in with Google"></Button>

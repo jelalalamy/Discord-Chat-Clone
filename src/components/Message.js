@@ -17,7 +17,7 @@ const Message = ({ createdAt = null, text = '', displayName = '', photoURL = '' 
 
     return (
         <div>
-            {photoURL && (<img src={photoURL} alt="Avatar" className="rounded-full mr-4" width={45} height={45}/>)}
+            {photoURL && (<img src={photoURL} alt="Avatar" className="userPic" width={45} height={45}/>)}
             {displayName && (<p>{displayName}</p>)}
             {createdAt?.seconds && (<span>{formatDate(new Date(createdAt.seconds * 1000))}</span>)}
             <p>{text}</p>

@@ -9,9 +9,12 @@ body {
   color:white;
 }
 
+ul {
+  list-style-type: none;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* The Modal (background) */
@@ -70,4 +73,8 @@ code {
 
 .userList{
   width:20%;
+}
+
+.userPic{
+  border-radius: 50%;
 }
