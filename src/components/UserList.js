@@ -25,16 +25,22 @@ const UserList = () => {
 
     return (
         <div className="userList">
-            <h2>Users</h2>
-            <ul>
+        <h2>Users</h2>
+            {/* <ul>
                 {
                     users.map(user => (
                         <li key={user.id}><img src={user.photoURL} alt="Avatar" className="userPic" width={45} height={45}/>{user.nickname}</li>
                     ))
                 }
-            </ul>
+            </ul> */}
+            {
+                users.map(user=>(
+                    <div className="userListUser" key={user.id}><img src={user.photoURL} alt="Avatar" className="userPic" width={40} height={40}/><span>{user.nickname}</span></div>
+                ))
+            }
         </div>
     )
+    
 }
 
 export default UserList

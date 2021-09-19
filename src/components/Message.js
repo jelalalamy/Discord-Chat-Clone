@@ -16,11 +16,11 @@ const Message = ({ createdAt = null, text = '', displayName = '', photoURL = '' 
     if (!text) return null;
 
     return (
-        <div>
-            {photoURL && (<img src={photoURL} alt="Avatar" className="userPic" width={45} height={45}/>)}
-            {displayName && (<p>{displayName}</p>)}
-            {createdAt?.seconds && (<span>{formatDate(new Date(createdAt.seconds * 1000))}</span>)}
-            <p>{text}</p>
+        <div className="singleMessage">
+            {photoURL && (<div className="one"><img src={photoURL} alt="Avatar" className="userPic" width={40} height={40}/></div>)}
+            {(displayName && createdAt?.seconds) && 
+            (<div className="two"><span className="msgName">{displayName}</span><span className="msgTime">{formatDate(new Date(createdAt.seconds * 1000))}</span></div>)}
+            <div className="three"><p>{text}</p></div>
         </div>
     )
 }
