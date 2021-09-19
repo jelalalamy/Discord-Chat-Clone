@@ -1,3 +1,9 @@
+* {
+  margin:0px;
+  padding:0px;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -84,6 +90,13 @@ code {
 .userList {
   display:flex;
   flex-direction: column;
+  background-color: #303335;
+  height:100vh;
+  /*
+  border-radius: 15px;
+  border: 5px solid #222629;
+  */
+  padding:10px 0px;
 }
 
 .userListUser {
@@ -97,11 +110,11 @@ code {
 }
 
 .chat{
-    height:500px;
+    height:70vh;
     background-color: #303335;
-    overflow-y: auto;
-    padding: 0px 40px 0px 40px;
+    padding: 0px 20px;
     border: 0px solid green;
+    overflow-y: scroll;
 }
 
 .chat ul {
@@ -109,12 +122,22 @@ code {
 }
 
 .placeholderdiv{
-  width:80%;
-  padding: 10px;
+  width:85%;
+  padding: 10px 10px 10px 10px;
+}
+
+.placeholderdiv button {
+  padding:10px;
+  margin:10px;
 }
 
 .userList{
-  width:20%;
+  width:15%;
+}
+
+.userList h2 {
+  margin: 10px 0;
+  padding: 0 0 0 10px;
 }
 
 .userPic{
@@ -165,3 +188,70 @@ code {
   font-size: 0.8em;
 }
 
+.sendMessage {
+  background-color: #303335;
+  padding: 0px 20px;
+}
+
+.sendMessage input{
+  width:100%;
+  padding: 15px 58px;
+  margin-bottom: 10px;
+  background-color: #303335;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+}
+
+.hideThis {
+  display: none;
+}
+
+.container2 {
+  height:100vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container2 h1 {
+  font-size: 7em;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.container2 h2 {
+  font-size: 2em;
+  font-weight:300;
+  margin-bottom: 20px;
+}
+
+.container2 button{
+  background-color: #fff;
+  border:none;
+  border-radius: 5px;
+  color:#303335;
+  padding: 15px 10px;
+  transition:0.5s;
+}
+
+.container2 button:hover{
+  background-color:#303335;
+  color:#fff;
+}
+
+.chat h2, #welcomeText {
+  color:grey;
+  padding-left:60px;
+}
+
+#welcomeText{
+  margin-bottom:20px;
+}
+
+.chat h2{
+  font-weight:500;
+}

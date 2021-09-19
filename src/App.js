@@ -91,19 +91,20 @@ const App = () => {
         user ? (
           <div className="container">
             <div className="placeholderdiv">
-              <h1>god i need to get better at css</h1>
+              <h1>placeholder text</h1>
               <Channel user={user} />
-              <Button onClick={() => setPop(!pop)} text="User"></Button>
+              <Button className="but" onClick={() => setPop(!pop)} text="User"></Button>
               {pop && <PopUp user={user} stateChanger={setPop}></PopUp>}
-              <Button onClick={signOut} text="Sign out"></Button>
+              <Button className="but" onClick={signOut} text="Sign out"></Button>
             </div>
             <UserList></UserList>
           </div>
         ) :
-          <>
-            <h1>Hey, this is going to be my own realtime chat application.</h1>
+          <div className="container2">
+            <h1>Hey.</h1>
+            <h2>I'm making my own realtime chat application.</h2>
             <Button onClick={signInGoogle} text="Sign in with Google"></Button>
-          </>
+          </div>
       }
     </div>
   );

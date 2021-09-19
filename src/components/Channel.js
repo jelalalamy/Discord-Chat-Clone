@@ -10,7 +10,8 @@ const Channel = ({ user = null}) => {
     const [newMessage, setNewMessage] = useState('');
     const db = firebase.firestore();
 
-    const {uid, displayName, photoURL} = user;
+    //const {uid, displayName, photoURL} = user;
+    const {uid, photoURL} = user;
 
     useEffect(() => {
         if (db) {
@@ -34,14 +35,16 @@ const Channel = ({ user = null}) => {
 
         const personFrom = await db.collection('users').doc(uid).get();
         const blocked = await personFrom.data().blocked;
+        const nickname = await personFrom.data().nickname;
         console.log("blocked: ", blocked);
+        console.log("nickname: ", nickname);
         if (db) {
             if (!blocked){
                 db.collection('messages').add({
                     text: newMessage,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                     uid,
-                    displayName,
+                    nickname,
                     photoURL
                 })
             } else {
@@ -71,7 +74,8 @@ const Channel = ({ user = null}) => {
     return (
         <div>
             <div className="chat">
-                <p>This is the start of the channel.</p>
+                <h2>Welcome!</h2>
+                <p id="welcomeText">This is the start of the channel.</p>
                 <ul>
                     {
                         messages.map(message => (
@@ -80,10 +84,12 @@ const Channel = ({ user = null}) => {
                     }
                 </ul>
             </div>
+            <div className="sendMessage">
             <form onSubmit={handleOnSubmit}>
                 <input type="text" value={newMessage} onChange={handleOnChange} placeholder="Message"/>
-                <button type="submit" disable={(!newMessage).toString()}>Send</button>
+                <input type="submit" disable={(!newMessage).toString()} className="hideThis"/>
             </form>
+            </div>
         </div>
     )
 }

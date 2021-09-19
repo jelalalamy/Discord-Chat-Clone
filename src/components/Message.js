@@ -11,15 +11,15 @@ const formatDate = date => {
     return formattedDate;
 }
 
-const Message = ({ createdAt = null, text = '', displayName = '', photoURL = '' }) => {
+const Message = ({ createdAt = null, text = '', nickname = '', photoURL = '' }) => {
 
     if (!text) return null;
 
     return (
         <div className="singleMessage">
             {photoURL && (<div className="one"><img src={photoURL} alt="Avatar" className="userPic" width={40} height={40}/></div>)}
-            {(displayName && createdAt?.seconds) && 
-            (<div className="two"><span className="msgName">{displayName}</span><span className="msgTime">{formatDate(new Date(createdAt.seconds * 1000))}</span></div>)}
+            {(nickname && createdAt?.seconds) && 
+            (<div className="two"><span className="msgName">{nickname}</span><span className="msgTime">{formatDate(new Date(createdAt.seconds * 1000))}</span></div>)}
             <div className="three"><p>{text}</p></div>
         </div>
     )
